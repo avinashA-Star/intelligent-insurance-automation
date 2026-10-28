@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Intelligent Insurance Automation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Intelligent Insurance Automation</h1>
+  <p>Instant quotes, automated claim triage and fraud screening in one base system.</p>
+</header>
+<nav role="tablist">
+  <button role="tab" aria-selected="true" data-tab="quote">Get a quote</button>
+  <button role="tab" aria-selected="false" data-tab="claim">File a claim</button>
+  <button role="tab" aria-selected="false" data-tab="dash">Claims dashboard</button>
+</nav>
+<main>
+<section id="quote">
+  <h2>Premium calculator</h2>
+  <div class="grid">
+    <label>Age<input id="q-age" type="number" min="18" max="90" value="30"></label>
+    <label>Policy type<select id="q-type"><option value="health">Health</option><option value="auto">Auto</option><option value="home">Home</option><option value="life">Life</option></select></label>
+    <label>Coverage amount (₹)<input id="q-cov" type="number" min="100000" step="50000" value="1000000"></label>
+    <label>Smoker / risky habit<select id="q-smoke"><option value="0">No</option><option value="1">Yes</option></select></label>
+    <label>Claims in last 3 years<input id="q-prev" type="number" min="0" max="10" value="0"></label>
+  </div>
+  <button class="btn" id="quote-btn">Calculate premium</button>
+  <div id="quote-out"></div>
+</section>
+
+<section id="claim" hidden>
+  <h2>New claim</h2>
+  <div class="grid">
+    <label>Claimant name<input id="c-name" value="Ravi Kumar"></label>
+    <label>Policy type<select id="c-type"><option value="health">Health</option><option value="auto">Auto</option><option value="home">Home</option><option value="life">Life</option></select></label>
+    <label>Claim amount (₹)<input id="c-amt" type="number" min="1" value="45000"></label>
+    <label>Policy coverage (₹)<input id="c-cov" type="number" min="1" value="1000000"></label>
+    <label>Policy age (months)<input id="c-age" type="number" min="0" value="18"></label>
+    <label>Claims in last 12 months<input id="c-prev" type="number" min="0" value="0"></label>
+    <label>Days from incident to filing<input id="c-delay" type="number" min="0" value="3"></label>
+    <label>Documents attached<select id="c-docs"><option value="1">Yes</option><option value="0">No</option></select></label>
+  </div>
+  <label style="margin-top:12px">Description<textarea id="c-desc" rows="3">Hospitalised for 3 days due to viral fever.</textarea></label>
+  <button class="btn" id="claim-btn">Submit and assess</button>
+  <div id="claim-out"></div>
+</section>
+
+<section id="dash" hidden>
+  <h2>Claims dashboard</h2>
+  <div class="stats" id="stats"></div>
+  <div class="tbl" style="margin-top:16px"><table>
+    <thead><tr><th>ID</th><th>Claimant</th><th>Type</th><th>Amount</th><th>Risk</th><th>Decision</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
